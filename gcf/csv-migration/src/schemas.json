@@ -1,0 +1,17 @@
+{
+    "departments": {
+        "id": "int",
+        "department": "str"
+    },
+    "jobs": {
+        "id": "int",
+        "job": "str"
+    },
+    "hired_employees": {
+        "id": "int",
+        "name": "str",
+        "datetime": "str",
+        "department_id": "int",
+        "job_id": "int"
+    }
+}

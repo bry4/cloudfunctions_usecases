@@ -1,0 +1,35 @@
+## Exec locally rest-api
+docker build -t rest-api . && docker run --rm -p 8080:8080 rest-api
+
+## Exec locally csv-migration
+docker build -t csv-migration . && docker run --rm csv-migration
+
+## Exec locally backup-process
+docker build -t backup-process . && docker run --rm backup-process
+
+## Exec locally restore-process
+docker build -t restore-process . && docker run --rm restore-process
+
+## API data structure
+{
+    "table": "table_name",
+    "values": [
+        {"col1": val1,"col2": val2},
+        {"col1": val3,"col2": val4}
+    ]
+    "mode": "append"
+}
+
+## Example post request REST-API
+
+curl -m 70 -X POST https://us-central1-green-device-382800.cloudfunctions.net/rest-api-function \
+-H "Authorization: bearer $(gcloud auth print-identity-token)" \
+-H "Content-Type: application/json" \
+-d '{
+    "table": "departments",
+    "values": [
+        {"id": 1,"department": "Supply Chain"},
+        {"id": 2,"department": "Sales"}
+        ],
+    "mode": "append"
+}'
